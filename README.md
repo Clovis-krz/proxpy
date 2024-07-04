@@ -30,17 +30,23 @@ cp .env.example .env
 Edit .env file and add values to: HOST, NODE, USER, PASSWORD and MOONLIGHTRUN.
 ## Alias
 ### NixOS
+Create `start.sh` file
+```sh
+#!/usr/bin/env bash
+nix-shell $HOME/<PATH TO FOLDER>/proxpy/shell.nix --run "python3 $HOME/<PATH TO FOLDER>/proxpy/Proxpy.py"
+```
+
 Add to your `configuration.nix` 
 ```nixos
 programs.bash.shellAliases = {
-   proxpy = "sh $HOME/Code/proxpy/start.sh";
+   proxpy = "sh $HOME/<PATH TO FOLDER>/proxpy/start.sh";
 };
 ```
 
 ### Other Linux
 Create proxpy alias in ~/.bash_aliases :
 ```bash
-alias proxpy='python3 /<ABSOLUTE PATH TO FOLDER>/Proxpy/Proxpy.py'
+alias proxpy='python3 $HOME/<PATH TO FOLDER>/proxpy/Proxpy.py'
 ```
 ## Start Proxpy
 Run script :
